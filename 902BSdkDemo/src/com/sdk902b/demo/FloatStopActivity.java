@@ -1,0 +1,120 @@
+package com.sdk902b.demo;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
+import com.sdk902b.demo.R;
+import com.sdk902b.demo.util.ActivityUtil;
+import com.sleepace.sdk.interfs.IResultCallback;
+import com.sleepace.sdk.manager.CallbackData;
+
+public class FloatStopActivity extends BaseActivity {
+
+	private ImageView mImChangeMusic;
+
+	private ImageView mImDisable;
+	
+	
+	
+	private  RelativeLayout mLayoutChangeMusic;
+	private RelativeLayout  mLayoutDisable;
+
+	private static final byte OPERATION_WAVE = 0x01;// 悬停
+	private static final byte OPERATION_MUSIC = 0x01;// 暂停播放
+	private static final byte OPERATION_STOP = (byte) 0xFF;// 停用
+	private byte TEMP_SELECT = 0x00;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_float_stop);
+		findView();
+		initListener();
+		initUI();
+	}
+
+	public void findView() {
+		super.findView();
+		mLayoutChangeMusic = (RelativeLayout) findViewById(R.id.gesture_play_pause_music);
+		mLayoutDisable = (RelativeLayout) findViewById(R.id.gesture_hover_rl_invalid);
+		mImChangeMusic=(ImageView)findViewById(R.id.gesture_control_im_change_scene);
+		mImDisable = (ImageView) findViewById(R.id.gesture_control_im_invalid);
+	}
+
+	public void initUI() {
+		tvTitle.setText(getString(R.string.Hover));
+		tvRight.setText(getString(R.string.save));
+	}
+
+	@Override
+	public void onClick(View v) {
+		super.onClick(v);
+		switch (v.getId()) {
+		case R.id.gesture_play_pause_music:
+			selectMusic();
+			break;
+
+		case R.id.gesture_hover_rl_invalid:
+			selectDisable();
+			break;
+		}
+
+	}
+
+	private void selectMusic() {
+		mImChangeMusic.setVisibility(View.VISIBLE);
+		mImDisable.setVisibility(View.GONE);
+		TEMP_SELECT = OPERATION_MUSIC;
+
+	}
+
+	private void selectDisable() {
+		mImChangeMusic.setVisibility(View.GONE);
+		mImDisable.setVisibility(View.VISIBLE);
+		TEMP_SELECT = OPERATION_STOP;
+
+	}
+
+	public void initListener() {
+		super.initListener();
+		mLayoutChangeMusic.setOnClickListener(this);
+		mLayoutDisable.setOnClickListener(this);
+		tvRight.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				showLoading();
+
+				mHelper.gestureConfig(OPERATION_WAVE, TEMP_SELECT, 3000,
+						new IResultCallback() {
+							@Override
+							public void onResultCallback(final CallbackData cd) {
+								// TODO Auto-generated method stub
+								if (!ActivityUtil.isActivityAlive(mActivity)) {
+									return;
+								}
+
+								runOnUiThread(new Runnable() {
+									public void run() {
+										hideLoading();
+										if (cd.isSuccess()) {
+											finish();
+										} else {
+											showErrTips(cd);
+										}
+									}
+								});
+							}
+						});
+			}
+		});
+		
+	
+	}
+
+}
