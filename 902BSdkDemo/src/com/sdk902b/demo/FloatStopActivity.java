@@ -1,5 +1,7 @@
 package com.sdk902b.demo;
 
+import java.util.List;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.RelativeLayout;
 
 import com.sdk902b.demo.R;
 import com.sdk902b.demo.util.ActivityUtil;
+import com.sleepace.sdk.core.nox.domain.BleNoxGestureInfo;
 import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CallbackData;
 
@@ -35,6 +38,7 @@ public class FloatStopActivity extends BaseActivity {
 		findView();
 		initListener();
 		initUI();
+		initData();
 	}
 
 	public void findView() {
@@ -48,6 +52,42 @@ public class FloatStopActivity extends BaseActivity {
 	public void initUI() {
 		tvTitle.setText(getString(R.string.Hover));
 		tvRight.setText(getString(R.string.save));
+	}
+	public void initData(){
+		showLoading();
+		//获取手势信息
+		mHelper.gestureConfigGet(3000,new IResultCallback<List<BleNoxGestureInfo>>() {
+			@Override
+			public void onResultCallback(final CallbackData<List<BleNoxGestureInfo>> cd) {
+				// TODO Auto-generated method stub
+				if (!ActivityUtil.isActivityAlive(mActivity)) {
+					return;
+				}
+				runOnUiThread(new Runnable() {
+					public void run() {
+						hideLoading();
+						if (cd.isSuccess()) {
+							List<BleNoxGestureInfo> bleNoxGestureInList=cd.getResult();
+							int size=bleNoxGestureInList.size();
+							for(int i=0;i<size;i++){
+								byte gesture=	bleNoxGestureInList.get(i).getGesture();
+								byte opt=bleNoxGestureInList.get(i).getOpt();
+								if(gesture==1){
+									if(opt==OPERATION_STOP){
+										selectDisable();
+									}else if(opt==OPERATION_MUSIC){
+										selectMusic();
+									}
+								}
+							}
+							Log.e(TAG,"悬停手势个数:"+size +"操作编号:"+bleNoxGestureInList.get(1).getOpt()+"===输入动作==："+bleNoxGestureInList.get(1).getGesture());
+						} else {
+							showErrTips(cd);
+						}
+					}
+				});
+			}
+		});
 	}
 
 	@Override
@@ -90,7 +130,7 @@ public class FloatStopActivity extends BaseActivity {
 				// TODO Auto-generated method stub
 				showLoading();
 
-				mHelper.gestureConfig(OPERATION_WAVE, TEMP_SELECT, 3000,
+				mHelper.gestureConfigSet(OPERATION_WAVE, TEMP_SELECT, 3000,
 						new IResultCallback() {
 							@Override
 							public void onResultCallback(final CallbackData cd) {

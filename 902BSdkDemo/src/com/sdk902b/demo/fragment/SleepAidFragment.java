@@ -13,6 +13,7 @@ import com.sdk902b.demo.view.SelectValueDialog.ValueSelectedListener;
 import com.sleepace.sdk.core.nox.domain.BleNoxAidInfo;
 import com.sleepace.sdk.core.nox.domain.SLPLight;
 import com.sleepace.sdk.core.nox.interfs.INoxManager;
+import com.sleepace.sdk.core.nox.interfs.ISleepAidManager;
 import com.sleepace.sdk.core.nox.interfs.INoxManager.AromaSpeed;
 import com.sleepace.sdk.interfs.IConnectionStateCallback;
 import com.sleepace.sdk.interfs.IDeviceManager;
@@ -571,7 +572,7 @@ public class SleepAidFragment extends BaseFragment {
 		String strVolume = etVolume.getText().toString();
 		byte volume = (byte)(int)Integer.valueOf(strVolume);
 		
-		getDeviceHelper().turnOnMusic(music.getMusicID(), volume, (byte)2, 3000, new IResultCallback() {
+		getDeviceHelper().turnOnMusic((byte)0,music.getMusicID(), volume, (byte)2, 3000, new IResultCallback() {
 			@Override
 			public void onResultCallback(final CallbackData cd) {
 				// TODO Auto-generated method stub

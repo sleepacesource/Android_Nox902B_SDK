@@ -84,7 +84,7 @@
         <include
             layout="@layout/divider_line"
             android:paddingLeft="@dimen/activity_margin"
-            android:paddingRight="@dimen/activity_margin" />
+            android:paddingRight="@dimen/activity_margin" />      
 
         <Button
             android:id="@+id/btn_restore"

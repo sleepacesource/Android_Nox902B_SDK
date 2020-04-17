@@ -194,8 +194,7 @@ public class DeviceFragment extends BaseFragment {
 		} else if (v == btnOneKeyStart) {
 			SLPLight light = new SLPLight();
 			light.setR((byte) 255);
-			getDeviceHelper().oneKeyStart(
-					INoxManager.AromaSpeed.COMMON.getValue(), (byte) 50,
+			getDeviceHelper().oneKeyStart((byte) 50,
 					INoxManager.LightMode.LIGHT_COLOR, light, 3000,
 					new IResultCallback() {
 						@Override
@@ -219,7 +218,7 @@ public class DeviceFragment extends BaseFragment {
 		} else if (v == btnUpgrade) {
 	
 			final File file = new File(mActivity.getCacheDir(),
-					"SN902B_20180509.1.24_release.MVA");			
+					"SN902B_20200401.1.28_beta.MVA");			
 			if (!file.exists()) {
 				return;
 			}

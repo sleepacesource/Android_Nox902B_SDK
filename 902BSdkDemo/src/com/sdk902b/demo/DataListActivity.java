@@ -136,7 +136,7 @@ public class DataListActivity extends BaseActivity {
 			
 			if(dataType == DATA_TYPE_ALARM_MUSIC) {
 				MusicInfo mInfo = (MusicInfo) adapter.getItem(position);
-				mHelper.turnOnMusic(mInfo.getMusicID(), (byte)12, (byte)2, 3000, new IResultCallback() {
+				mHelper.turnOnMusic((byte)0,mInfo.getMusicID(), (byte)12, (byte)2, 3000, new IResultCallback() {
 					@Override
 					public void onResultCallback(CallbackData cd) {
 						// TODO Auto-generated method stub
@@ -181,7 +181,7 @@ public class DataListActivity extends BaseActivity {
 		super.finish();
 		if(dataType == DATA_TYPE_ALARM_MUSIC) {
 			if(playing) {
-				mHelper.turnOffMusic(3000, null);
+				mHelper.turnOffMusic((byte)0,3000, null);
 			}
 		}
 	}

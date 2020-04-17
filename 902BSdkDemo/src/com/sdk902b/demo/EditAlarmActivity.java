@@ -268,7 +268,7 @@ public class EditAlarmActivity extends BaseActivity {
     		if(!isPreview) {
     			
     			LogUtil.log(TAG+" preview alarm:" + alarm);
-    			mHelper.startAlarmPreview(alarm.getVolume(), alarm.getBrightness(), alarm.getAromaRate(), alarm.getMusicID(), 3000, new IResultCallback() {
+    			mHelper.startAlarmPreview(alarm.getVolume(), alarm.getBrightness(), alarm.getMusicID(), 3000, new IResultCallback() {
     				@Override
     				public void onResultCallback(final CallbackData cd) {
     					// TODO Auto-generated method stub

@@ -1,7 +1,10 @@
 package com.sdk902b.demo;
 
+import java.util.List;
+
 import android.R.bool;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -9,6 +12,7 @@ import android.widget.RelativeLayout;
 
 import com.sdk902b.demo.R;
 import com.sdk902b.demo.util.ActivityUtil;
+import com.sleepace.sdk.core.nox.domain.BleNoxGestureInfo;
 import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CallbackData;
 
@@ -39,6 +43,7 @@ public class GestureSettingActivity extends BaseActivity {
 		findView();
 		initListener();
 		initUI();
+		initData();
 	}
 
 	public void findView() {
@@ -51,6 +56,46 @@ public class GestureSettingActivity extends BaseActivity {
 		mlayoutChangeMusic = (RelativeLayout) findViewById(R.id.gesture_control_rl_change_music);
 		mlayoutChangeInvalid = (RelativeLayout) findViewById(R.id.gesture_control_rl_invalid);
 
+	}
+	
+	
+	public void initData(){
+		showLoading();
+		//获取手势信息
+		mHelper.gestureConfigGet(3000,new IResultCallback<List<BleNoxGestureInfo>>() {
+			@Override
+			public void onResultCallback(final CallbackData<List<BleNoxGestureInfo>> cd) {
+				// TODO Auto-generated method stub
+				if (!ActivityUtil.isActivityAlive(mActivity)) {
+					return;
+				}
+				runOnUiThread(new Runnable() {
+					public void run() {
+						hideLoading();
+						if (cd.isSuccess()) {
+							List<BleNoxGestureInfo> bleNoxGestureInList=cd.getResult();
+							int size=bleNoxGestureInList.size();
+							for(int i=0;i<size;i++){
+								byte  gesture=	bleNoxGestureInList.get(i).getGesture();
+								byte opt=bleNoxGestureInList.get(i).getOpt();
+								if(gesture==0){
+									if(opt==OPERATION_LIGTH_COLOR){
+										selectLightColor();
+									}else if(opt==OPERATION_MUSIC){
+										selectMusic();
+									}else if(opt==OPERATION_STOP){
+										selectDisable();
+									}
+								}
+							}
+							//Log.e(TAG,"挥手手势个数:"+size +"操作编号:"+bleNoxGestureInList.get(0).getOpt()+"===输入动作==："+bleNoxGestureInList.get(0).getGesture());
+						} else {
+							showErrTips(cd);
+						}
+					}
+				});
+			}
+		});
 	}
 
 	public void initListener() {
@@ -76,7 +121,7 @@ public class GestureSettingActivity extends BaseActivity {
 				// TODO Auto-generated method stub
 				showLoading();
 
-				mHelper.gestureConfig(OPERATION_WAVE, TEMP_SELECT, 3000,
+				mHelper.gestureConfigSet(OPERATION_WAVE, TEMP_SELECT, 3000,
 						new IResultCallback() {
 							@Override
 							public void onResultCallback(final CallbackData cd) {

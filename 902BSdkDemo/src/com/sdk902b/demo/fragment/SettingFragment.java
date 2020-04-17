@@ -47,6 +47,7 @@ public class SettingFragment extends BaseFragment {
 		mTvSmallLight = root.findViewById(R.id.tv_small_light);
 		mTvGesture = root.findViewById(R.id.tv_gesture);
 		mTvFloatStop = root.findViewById(R.id.tv_float_stop);
+		
 		btnRestore = (Button) root.findViewById(R.id.btn_restore);
 	}
 
@@ -121,10 +122,10 @@ public class SettingFragment extends BaseFragment {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		super.onClick(v);
-		if(v == vAlarm) {
-		
-			Intent intent = new Intent(mActivity, EditAlarmActivity.class);
-			intent.putExtra("action", "add");
+		if(v == vAlarm) {	
+//			Intent intent = new Intent(mActivity, EditAlarmActivity.class);
+//			intent.putExtra("action", "add");
+			Intent intent = new Intent(mActivity, AlarmListActivity.class);
 			startActivity(intent);
 		}else if(v == mTvSmallLight) {
 			Intent intent = new Intent(mActivity, SmallNightLightActivity.class);

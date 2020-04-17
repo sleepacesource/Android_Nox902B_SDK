@@ -131,7 +131,7 @@ public class SmallNightLightActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub			
-				mHelper.nigthLightConfig(bleNoxLight, 3000,
+				mHelper.nigthLightConfigSet(bleNoxLight, 3000,
 						new IResultCallback() {
 							@Override
 							public void onResultCallback(final CallbackData cd) {
