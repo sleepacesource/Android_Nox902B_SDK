@@ -9,6 +9,7 @@ import java.lang.reflect.Field;
 import com.sdk902b.demo.MainActivity;
 import com.sdk902b.demo.R;
 import com.sdk902b.demo.SearchBleDeviceActivity;
+import com.sleepace.sdk.core.nox.domain.BleNoxDeviceInfo;
 import com.sleepace.sdk.core.nox.domain.SLPLight;
 import com.sleepace.sdk.core.nox.interfs.INoxManager;
 import com.sleepace.sdk.core.nox.interfs.ISleepAidManager;
@@ -38,8 +39,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class DeviceFragment extends BaseFragment {
-	private Button btnConnectDevice, btnDeviceName, btnDeviceId, btnVersion,
-			btnOneKeyStart, btnOneKeyStop, btnUpgrade;
+	private Button btnConnectDevice, btnDeviceName, btnDeviceId, btnVersion, btnUpgrade;
 	private TextView tvDeviceName, tvDeviceId, tvVersion;
 	private boolean upgrading = false;
 
@@ -66,8 +66,6 @@ public class DeviceFragment extends BaseFragment {
 		btnDeviceId = (Button) root.findViewById(R.id.btn_get_device_id);
 		btnVersion = (Button) root.findViewById(R.id.btn_device_version);
 		btnUpgrade = (Button) root.findViewById(R.id.btn_upgrade_fireware);
-		btnOneKeyStart = (Button) root.findViewById(R.id.btn_onekey_start);
-		btnOneKeyStop = (Button) root.findViewById(R.id.btn_onekey_stop);
 	}
 
 	protected void initListener() {
@@ -79,8 +77,6 @@ public class DeviceFragment extends BaseFragment {
 		btnDeviceId.setOnClickListener(this);
 		btnVersion.setOnClickListener(this);
 		btnUpgrade.setOnClickListener(this);
-		btnOneKeyStart.setOnClickListener(this);
-		btnOneKeyStop.setOnClickListener(this);
 	}
 
 	protected void initUI() {
@@ -123,8 +119,6 @@ public class DeviceFragment extends BaseFragment {
 		btnDeviceName.setEnabled(enable);
 		btnDeviceId.setEnabled(enable);
 		btnVersion.setEnabled(enable);
-		btnOneKeyStart.setEnabled(enable);
-		btnOneKeyStop.setEnabled(enable);
 		btnUpgrade.setEnabled(enable);
 	}
 
@@ -191,31 +185,7 @@ public class DeviceFragment extends BaseFragment {
 			} else {// 断开设备
 				getDeviceHelper().disconnect();
 			}
-		} else if (v == btnOneKeyStart) {
-			SLPLight light = new SLPLight();
-			light.setR((byte) 255);
-			getDeviceHelper().oneKeyStart((byte) 50,
-					INoxManager.LightMode.LIGHT_COLOR, light, 3000,
-					new IResultCallback() {
-						@Override
-						public void onResultCallback(CallbackData cd) {
-							// TODO Auto-generated method stub
-							if (cd.getCallbackType() == INoxManager.METHOD_ONEKEY_START) {
-								SdkLog.log(TAG + " oneKeyStart " + cd);
-							}
-						}
-					});
-		} else if (v == btnOneKeyStop) {
-			getDeviceHelper().oneKeyStop(3000, new IResultCallback() {
-				@Override
-				public void onResultCallback(CallbackData cd) {
-					// TODO Auto-generated method stub
-					if (cd.getCallbackType() == INoxManager.METHOD_ONEKEY_STOP) {
-						SdkLog.log(TAG + " oneKeyStop " + cd);
-					}
-				}
-			});
-		} else if (v == btnUpgrade) {
+		}else if (v == btnUpgrade) {
 	
 			final File file = new File(mActivity.getCacheDir(),
 					"SN902B_20200401.1.28_beta.MVA");			
@@ -279,7 +249,15 @@ public class DeviceFragment extends BaseFragment {
 		} else if (v == btnDeviceId) {
 			tvDeviceId.setText(MainActivity.deviceId);
 		} else if (v == btnVersion) {
-			tvVersion.setText(MainActivity.version);
+			//tvVersion.setText(MainActivity.version);
+			SdkLog.log(TAG+" get version-----");
+			getDeviceHelper().getDeviceInfo(3000, new IResultCallback<BleNoxDeviceInfo>() {
+				@Override
+				public void onResultCallback(CallbackData<BleNoxDeviceInfo> cd) {
+					// TODO Auto-generated method stub
+					SdkLog.log(TAG+" getDeviceInfo-----" + cd);
+				}
+			});
 		}
 	}
 

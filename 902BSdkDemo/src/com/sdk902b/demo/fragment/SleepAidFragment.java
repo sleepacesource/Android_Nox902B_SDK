@@ -46,8 +46,7 @@ public class SleepAidFragment extends BaseFragment {
 	private RadioGroup rgAroma;
 	
 	private SelectValueDialog valueDialog;
-	
-	private BleNoxAidInfo aidInfo = new BleNoxAidInfo();
+	private short aidStopDuration = 0;
 	private MusicInfo music = new MusicInfo();
 	
 	private boolean playing;
@@ -207,32 +206,13 @@ public class SleepAidFragment extends BaseFragment {
 			}else if(checkedId == R.id.rb_close){
 				aromaRate = 0;
 			}
-			aidInfo.setAromaRate(aromaRate);
-//			getDeviceHelper().setAssistAroma(aromaRate, 3000, new IResultCallback() {
-//				@Override
-//				public void onResultCallback(final CallbackData cd) {
-//					// TODO Auto-generated method stub
-//					if(!isAdded()) {
-//						return;
-//					}
-//					LogUtil.log(TAG+" setAssistAroma cd:" + cd);
-//					mActivity.runOnUiThread(new Runnable() {
-//						public void run() {
-//							if(!cd.isSuccess()) {
-//								mActivity.showErrTips(cd);
-//							}
-//						}
-//					});
-//				}
-//			});
 		}
 	};
 
 
 	protected void initUI() {
 		// TODO Auto-generated method stub
-		
-		aidInfo.setAidStopDuration((byte) 1);
+		aidStopDuration = 1;
 		
 		int[] data = new int[45];
 		for(int i=1;i<=data.length;i++) {
@@ -253,7 +233,6 @@ public class SleepAidFragment extends BaseFragment {
 		etB.setText("0");
 		etW.setText("0");
 //		etBrightness.setText("38");
-		aidInfo.setAromaRate(AromaSpeed.COMMON.getValue());
 		initMusicButtonStatus();
 		initSleepAidDurationView();
 		rgAroma.setTag("ok");
@@ -265,7 +244,7 @@ public class SleepAidFragment extends BaseFragment {
 		public void onValueSelected(SelectValueDialog dialog, byte value) {
 			// TODO Auto-generated method stub
 			LogUtil.log(TAG+" onValueSelected val:" + value);
-			aidInfo.setAidStopDuration(value);
+			aidStopDuration = value;
 			initSleepAidDurationView();
 		}
 	};
@@ -275,10 +254,10 @@ public class SleepAidFragment extends BaseFragment {
 	}
 	
 	private void initSleepAidDurationView() {
-		String str = Utils.getDuration(mActivity, aidInfo.getAidStopDuration());
-		LogUtil.log(TAG+" initSleepAidDurationView str:" + str+",duration:" + aidInfo.getAidStopDuration());
+		String str = Utils.getDuration(mActivity, aidStopDuration);
+		LogUtil.log(TAG+" initSleepAidDurationView str:" + str+",duration:" + aidStopDuration);
 		tvSleepAidTimeValue.setText(str);
-		tvSleepAidTips.setText(getString(R.string.music_aroma_light_close2, String.valueOf(aidInfo.getAidStopDuration())));
+		tvSleepAidTips.setText(getString(R.string.music_aroma_light_close2, String.valueOf(aidStopDuration)));
 	}
 	
 	private void initMusicButtonStatus() {
@@ -366,7 +345,7 @@ public class SleepAidFragment extends BaseFragment {
 			startActivityForResult(intent, 100);
 		} else if(v == vSleepAidTime) {
 			valueDialog.setLabel(getString(R.string.cancel), getString(R.string.sa_last_time), getString(R.string.confirm), null);
-			valueDialog.setDefaultValue(aidInfo.getAidStopDuration());
+			valueDialog.setDefaultValue((byte) aidStopDuration);
 			valueDialog.show();
 		}
 		
@@ -467,7 +446,6 @@ public class SleepAidFragment extends BaseFragment {
 			
 			String strVolume = etVolume.getText().toString();
 			byte volume = (byte)(int)Integer.valueOf(strVolume);
-			aidInfo.setVolume(volume);
 			
 			String strR = etR.getText().toString();
 			String strG = etG.getText().toString();
@@ -481,19 +459,8 @@ public class SleepAidFragment extends BaseFragment {
 			byte w = (byte)(int)Integer.valueOf(strW);
 			byte brightness = (byte)(int)Integer.valueOf(strBrightness);
 			
-			SLPLight light = new SLPLight();
-			light.setR(r);
-			light.setG(g);
-			light.setB(b);
-			light.setW(w);
-			
-			aidInfo.setLight(light);
-			aidInfo.setBrightness(brightness);
-			
-			LogUtil.log(TAG+" sleepAidConfig:" + aidInfo);
-			
 			mActivity.showLoading();
-			getDeviceHelper().sleepAidConfig(aidInfo, 3000, new IResultCallback() {
+			getDeviceHelper().sleepAidConfig(volume, brightness, r, g, b, w, aidStopDuration, 3000, new IResultCallback() {
 				@Override
 				public void onResultCallback(final CallbackData cd) {
 					// TODO Auto-generated method stub
