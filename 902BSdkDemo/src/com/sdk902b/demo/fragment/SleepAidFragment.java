@@ -1,25 +1,23 @@
 package com.sdk902b.demo.fragment;
 
+import com.sdk902b.demo.BaseActivity.MyOnTouchListener;
 import com.sdk902b.demo.DataListActivity;
 import com.sdk902b.demo.DemoApp;
 import com.sdk902b.demo.R;
-import com.sdk902b.demo.BaseActivity.MyOnTouchListener;
 import com.sdk902b.demo.bean.MusicInfo;
 import com.sdk902b.demo.util.ActivityUtil;
 import com.sdk902b.demo.util.LogUtil;
 import com.sdk902b.demo.util.Utils;
 import com.sdk902b.demo.view.SelectValueDialog;
 import com.sdk902b.demo.view.SelectValueDialog.ValueSelectedListener;
-import com.sleepace.sdk.core.nox.domain.BleNoxAidInfo;
 import com.sleepace.sdk.core.nox.domain.SLPLight;
 import com.sleepace.sdk.core.nox.interfs.INoxManager;
-import com.sleepace.sdk.core.nox.interfs.ISleepAidManager;
-import com.sleepace.sdk.core.nox.interfs.INoxManager.AromaSpeed;
 import com.sleepace.sdk.interfs.IConnectionStateCallback;
 import com.sleepace.sdk.interfs.IDeviceManager;
 import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CONNECTION_STATE;
 import com.sleepace.sdk.manager.CallbackData;
+import com.sleepace.sdk.util.SdkLog;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -46,7 +44,7 @@ public class SleepAidFragment extends BaseFragment {
 	private RadioGroup rgAroma;
 	
 	private SelectValueDialog valueDialog;
-	private short aidStopDuration = 0;
+	private byte aidStopDuration = 0;
 	private MusicInfo music = new MusicInfo();
 	
 	private boolean playing;
@@ -345,7 +343,7 @@ public class SleepAidFragment extends BaseFragment {
 			startActivityForResult(intent, 100);
 		} else if(v == vSleepAidTime) {
 			valueDialog.setLabel(getString(R.string.cancel), getString(R.string.sa_last_time), getString(R.string.confirm), null);
-			valueDialog.setDefaultValue((byte) aidStopDuration);
+			valueDialog.setDefaultValue(aidStopDuration);
 			valueDialog.show();
 		}
 		
@@ -458,6 +456,8 @@ public class SleepAidFragment extends BaseFragment {
 			byte b = (byte)(int)Integer.valueOf(strB);
 			byte w = (byte)(int)Integer.valueOf(strW);
 			byte brightness = (byte)(int)Integer.valueOf(strBrightness);
+			
+			SdkLog.log(TAG+" save config vol:" + volume+", brightness:" + brightness+",r:" + r + ",g:" + g +",b:" +b+",w:" + w+",duration:" + aidStopDuration);
 			
 			mActivity.showLoading();
 			getDeviceHelper().sleepAidConfig(volume, brightness, r, g, b, w, aidStopDuration, 3000, new IResultCallback() {

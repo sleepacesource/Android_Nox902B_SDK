@@ -39,7 +39,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class DeviceFragment extends BaseFragment {
-	private Button btnConnectDevice, btnDeviceName, btnDeviceId, btnVersion, btnUpgrade;
+	private Button btnConnectDevice, btnDeviceName, btnDeviceId, btnVersion, btnStartSleepAid, btnStopSleepAid, btnUpgrade;
 	private TextView tvDeviceName, tvDeviceId, tvVersion;
 	private boolean upgrading = false;
 
@@ -65,6 +65,8 @@ public class DeviceFragment extends BaseFragment {
 		btnDeviceName = (Button) root.findViewById(R.id.btn_get_device_name);
 		btnDeviceId = (Button) root.findViewById(R.id.btn_get_device_id);
 		btnVersion = (Button) root.findViewById(R.id.btn_device_version);
+		btnStartSleepAid = (Button) root.findViewById(R.id.btn_start_sleepaid);
+		btnStopSleepAid = (Button) root.findViewById(R.id.btn_stop_sleepaid);
 		btnUpgrade = (Button) root.findViewById(R.id.btn_upgrade_fireware);
 	}
 
@@ -76,6 +78,8 @@ public class DeviceFragment extends BaseFragment {
 		btnDeviceName.setOnClickListener(this);
 		btnDeviceId.setOnClickListener(this);
 		btnVersion.setOnClickListener(this);
+		btnStartSleepAid.setOnClickListener(this);
+		btnStopSleepAid.setOnClickListener(this);
 		btnUpgrade.setOnClickListener(this);
 	}
 
@@ -249,13 +253,39 @@ public class DeviceFragment extends BaseFragment {
 		} else if (v == btnDeviceId) {
 			tvDeviceId.setText(MainActivity.deviceId);
 		} else if (v == btnVersion) {
-			//tvVersion.setText(MainActivity.version);
+			tvVersion.setText(MainActivity.version);
 			SdkLog.log(TAG+" get version-----");
 			getDeviceHelper().getDeviceInfo(3000, new IResultCallback<BleNoxDeviceInfo>() {
 				@Override
-				public void onResultCallback(CallbackData<BleNoxDeviceInfo> cd) {
+				public void onResultCallback(final CallbackData<BleNoxDeviceInfo> cd) {
 					// TODO Auto-generated method stub
 					SdkLog.log(TAG+" getDeviceInfo-----" + cd);
+					if(cd.isSuccess()) {
+						mActivity.runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								// TODO Auto-generated method stub
+								BleNoxDeviceInfo deviceInfo = cd.getResult();
+								tvVersion.setText(deviceInfo.getFirmwareVersion());
+							}
+						});
+					}
+				}
+			});
+		}else if(v == btnStartSleepAid) {
+			getDeviceHelper().sleepAidControl((byte)0, (byte)1, (byte)1, new IResultCallback() {
+				@Override
+				public void onResultCallback(CallbackData cd) {
+					// TODO Auto-generated method stub
+					SdkLog.log(TAG+" start sleepAid-----" + cd);
+				}
+			});
+		}else if(v == btnStopSleepAid) {
+			getDeviceHelper().sleepAidControl((byte)2, (byte)0, (byte)0, new IResultCallback() {
+				@Override
+				public void onResultCallback(CallbackData cd) {
+					// TODO Auto-generated method stub
+					SdkLog.log(TAG+" stop sleepAid-----" + cd);
 				}
 			});
 		}

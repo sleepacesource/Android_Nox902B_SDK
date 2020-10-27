@@ -141,6 +141,8 @@
     <string name="pm">PM</string>
     <string name="app_name">Nox SN902B SDK</string>
     <string name="nox_music">Nox Music</string>
+    <string name="start_sleepaid">Start Sleep Aid</string>
+    <string name="stop_sleepaid">Stop Sleep Aid</string>
 
     <string-array name="arr_week">
         <item>@string/mon</item>
