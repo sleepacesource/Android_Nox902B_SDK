@@ -1,0 +1,1136 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/page_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_color1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/r"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_r1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/g"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_g1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/b"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_b1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/w"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_w1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_preview1"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/preview"
+                    android:textSize="@dimen/Title_2" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_clear1"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:background="@drawable/clear_btn_bg"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/clear"
+                    android:textSize="@dimen/Title_2" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_color2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/r"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_r2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/g"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_g2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/b"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_b2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/w"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_w2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_preview2"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/preview"
+                    android:textSize="@dimen/Title_2" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_clear2"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:background="@drawable/clear_btn_bg"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/clear"
+                    android:textSize="@dimen/Title_2" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_color3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/r"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_r3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/g"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_g3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/b"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_b3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/w"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_w3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_preview3"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/preview"
+                    android:textSize="@dimen/Title_2" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_clear3"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:background="@drawable/clear_btn_bg"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/clear"
+                    android:textSize="@dimen/Title_2" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_color4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/r"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_r4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/g"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_g4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/b"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_b4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/w"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_w4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_preview4"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/preview"
+                    android:textSize="@dimen/Title_2" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_clear4"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:background="@drawable/clear_btn_bg"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/clear"
+                    android:textSize="@dimen/Title_2" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_color5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/r"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_r5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/g"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_g5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/b"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_b5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/w"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_w5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_preview5"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/preview"
+                    android:textSize="@dimen/Title_2" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_clear5"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:background="@drawable/clear_btn_bg"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/clear"
+                    android:textSize="@dimen/Title_2" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_color6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/r"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_r6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/g"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_g6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/b"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_b6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/w"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_w6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="7dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-255"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_4" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_preview6"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/preview"
+                    android:textSize="@dimen/Title_2" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/btn_clear6"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:background="@drawable/clear_btn_bg"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/clear"
+                    android:textSize="@dimen/Title_2" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_color7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" 
+                android:text="@string/label_color7"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/COLOR_3"
+                android:textSize="@dimen/Title_2" 
+                android:text="@string/stream_light"
+                />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

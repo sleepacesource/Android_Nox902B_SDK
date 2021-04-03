@@ -1,0 +1,183 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res/com.sa10012sdk.demo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/page_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingRight="@dimen/activity_margin" >
+
+        <RelativeLayout
+            android:id="@+id/layout_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/page_item_height"
+            android:background="@drawable/page_item_bg" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableRight="@drawable/ic_right"
+                android:text="@string/start_time"
+                android:textColor="@drawable/label_text_color"
+                android:textSize="@dimen/Title_3" />
+
+            <TextView
+                android:id="@+id/tv_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_3" />
+        </RelativeLayout>
+
+        <include layout="@layout/divider_line" />
+
+        <RelativeLayout
+            android:id="@+id/layout_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/page_item_height"
+            android:background="@drawable/page_item_bg" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableRight="@drawable/ic_right"
+                android:text="@string/close_time"
+                android:textColor="@drawable/label_text_color"
+                android:textSize="@dimen/Title_3" />
+
+            <TextView
+                android:id="@+id/tv_end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_3" />
+        </RelativeLayout>
+
+        <include layout="@layout/divider_line" />
+
+        <RelativeLayout
+            android:id="@+id/layout_repeat"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/page_item_height"
+            android:background="@drawable/page_item_bg" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableRight="@drawable/ic_right"
+                android:text="@string/reply"
+                android:textColor="@drawable/label_text_color"
+                android:textSize="@dimen/Title_3" />
+
+            <TextView
+                android:id="@+id/tv_reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_5" />
+        </RelativeLayout>
+
+        <include layout="@layout/divider_line" />
+
+        <RelativeLayout
+            android:id="@+id/layout_mode"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/page_item_height"
+            android:background="@drawable/page_item_bg" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableRight="@drawable/ic_right"
+                android:text="@string/timer_mode"
+                android:textColor="@drawable/label_text_color"
+                android:textSize="@dimen/Title_3" />
+
+            <TextView
+                android:id="@+id/tv_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_3" />
+        </RelativeLayout>
+
+        <include layout="@layout/divider_line" />
+
+        <TextView
+            android:id="@+id/layout_light"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/page_item_height"
+            android:layout_centerVertical="true"
+            android:background="@drawable/page_item_bg"
+            android:drawableRight="@drawable/ic_right"
+            android:gravity="center_vertical"
+            android:text="@string/setLight"
+            android:textColor="@drawable/label_text_color"
+            android:textSize="@dimen/Title_3" />
+
+        <include layout="@layout/divider_line" />
+
+        <LinearLayout
+            android:id="@+id/layout_music"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_music"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/page_item_height"
+                android:layout_centerVertical="true"
+                android:background="@drawable/page_item_bg"
+                android:drawableRight="@drawable/ic_right"
+                android:gravity="center_vertical"
+                android:text="@string/timer_music"
+                android:textColor="@drawable/label_text_color"
+                android:textSize="@dimen/Title_3" />
+
+            <include layout="@layout/divider_line" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@null"
+            android:text="@string/delete"
+            android:textColor="@color/red"
+            android:textSize="@dimen/Title_3" />
+    </LinearLayout>
+
+</LinearLayout>

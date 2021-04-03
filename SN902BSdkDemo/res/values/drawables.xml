@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+	<item name="transparent" type="drawable">#00000000</item>
+    <item name="page_bg" type="drawable">@color/white</item>
+    <item name="time_sel" type="drawable">@color/time_sel</item>
+    
+</resources>
