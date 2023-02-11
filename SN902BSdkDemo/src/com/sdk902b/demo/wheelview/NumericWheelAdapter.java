@@ -43,7 +43,7 @@ public class NumericWheelAdapter implements WheelAdapter {
 	}
 
 	private int[] data;
-	private int type=1;
+	private int type = 1;
 
 	public NumericWheelAdapter(int[] data, int type) {
 		this.data = data;
